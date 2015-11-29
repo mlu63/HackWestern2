@@ -180,13 +180,13 @@ appMenu.on('select', function(event) {
         running = false;
         if (optionTitle == "Group Run") {
           if (distance > friend_distance) {
-            optionCard.body("You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m");
+            optionCard.body("You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m");
             optionCard.subtitle("YOU WIN!");
           } else if (distance < friend_distance) {
-            optionCard.body("You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m");
+            optionCard.body("You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m");
             optionCard.subtitle("YOU LOSE!");
           } else {
-            optionCard.body("You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m");
+            optionCard.body("You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m");
             optionCard.subtitle("YOU TIED!");
           }
         } else if (optionTitle == "Solo Run") {
@@ -202,14 +202,16 @@ appMenu.on('select', function(event) {
         godmode = 0;
       } 
       else if (!running) { 
-        if (optionCard.title == "Solo Run") {
-          optionCard.body("Speed: 0 km/h\nDistance: 0:00 m\nTime: 0 s");
-        } else if (optionCard.title == "Group Run") {
-          optionCard.body("You:\n 0:00 km/h, 0.00m\nThem:\n 0:00 km/h, 0.00m");
+        if (optionTitle == "Solo Run") {
+          optionCard.body("0 km/h\n0.0 m\n0 s");
+        } else if (optionTitle == "Group Run") {
+          optionCard.body("You: 0:00 km/h, 0.0 m\nThem:\n 0:00 km/h, 0.0m");
         }
-        stopwatch.start();
-        running = true;
         optionCard.subtitle("");
+        setTimeout(function() {
+          stopwatch.start();
+          running = true;
+        }, 500);
       }
     });
        
@@ -227,11 +229,11 @@ appMenu.on('select', function(event) {
         time = stopwatch.getElapsedSeconds().toFixed(0);
         
         if (optionTitle == "Solo Run") {
-          optionCard.body(speed.toFixed(2) + " km/h\n"+distance.toFixed(2)+"m \n" + time +  " s "); 
+          optionCard.body(speed.toFixed(2) + " km/h\n"+distance.toFixed(2)+" m \n" + time +  " s "); 
         } else if (optionTitle == "Group Run") {
-          if (distance > friend_distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m \nWINNING";}  
-          else if (friend_distance > distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m \nLOSING";}
-          else if (friend_distance == distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m \nTIE";}
+          if (distance > friend_distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m \nWINNING";}  
+          else if (friend_distance > distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m \nLOSING";}
+          else if (friend_distance == distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m \nTIE";}
           optionCard.body(optionBody);
         }
       }

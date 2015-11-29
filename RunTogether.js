@@ -4,8 +4,8 @@ var Vibe = require('ui/vibe');
 //========== V A R I A B L E S ==========//
 var speed = 0;
 var friend_speed = 0;
-var distance =0;
-var friend_distance=0;
+var distance =0.0;
+var friend_distance=0.0;
 var time = 0;
 var running = false;
 var easter = 0;
@@ -154,9 +154,9 @@ appMenu.on('select', function(event) {
   if (optionTitle == "Solo Run") {
     optionBody = speed.toFixed(0) + " km/h\n"+ distance.toFixed(1) + " m \n" + time + " s ";
   } else if (optionTitle == "Group Run") {
-    if (distance > friend_distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m \nWINNING";}  
-    else if (friend_distance > distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m \nLOSING";}    
-    else if (friend_distance == distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(2)+" m \nTIE";}  
+    if (distance > friend_distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m \nWINNING";}  
+    else if (friend_distance > distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m \nLOSING";}    
+    else if (friend_distance == distance){optionBody = "You:\n " + speed.toFixed(2) + " km/h, " +distance.toFixed(1)+" m\nThem:\n " + friend_speed.toFixed(2) + " km/h, "+friend_distance.toFixed(1)+" m \n";}  
   } else if (optionTitle == "App Info") {
     optionBody = "RunTogether® is a crappy app designed to let you run against yourself or against friends in different locations.";
   }
@@ -205,7 +205,7 @@ appMenu.on('select', function(event) {
         if (optionTitle == "Solo Run") {
           optionCard.body("0 km/h\n0.0 m\n0 s");
         } else if (optionTitle == "Group Run") {
-          optionCard.body("You:\n 0:00 km/h, 0.0 m\nThem:\n 0:00 km/h, 0.0 m\n\n");
+          optionCard.body("You:\n 0.00 km/h, 0.0 m\nThem:\n 0.00 km/h, 0.0 m\n\n");
         }
         optionCard.subtitle("");
         setTimeout(function() {

@@ -205,7 +205,7 @@ appMenu.on('select', function(event) {
         if (optionTitle == "Solo Run") {
           optionCard.body("0 km/h\n0.0 m\n0 s");
         } else if (optionTitle == "Group Run") {
-          optionCard.body("You:\n 0:00 km/h, 0.0 m\nThem:\n 0:00 km/h, 0.0m\n\n");
+          optionCard.body("You:\n 0:00 km/h, 0.0 m\nThem:\n 0:00 km/h, 0.0 m\n\n");
         }
         optionCard.subtitle("");
         setTimeout(function() {
@@ -213,6 +213,19 @@ appMenu.on('select', function(event) {
           running = true;
         }, 500);
       }
+    });
+    
+    optionCard.on('click', 'back', function (){
+      running = false;
+      speed = 0;
+      time = 0;
+      distance = 0;
+      friend_speed = 0;
+      friend_distance = 0;
+      leg = 0;
+      godmode = 0;
+      optionCard.hide();
+      appMenu.show();
     });
        
     setInterval(function() {

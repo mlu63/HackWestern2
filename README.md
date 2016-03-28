@@ -7,6 +7,4 @@ As this was our first time using Pebble and Javascript, we had limited time and 
 
 The app in its current state will generate random speeds for the user and his friend, and increase distance and time according to that generated speed. 
 
-There are also hidden easter eggs you can find (take a look at the code!)
-
 Overall, I would like to work with Pebble again but in a scenario where I had more time to explore my options further.
